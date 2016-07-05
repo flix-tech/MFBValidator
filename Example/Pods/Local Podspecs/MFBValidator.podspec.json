@@ -1,0 +1,46 @@
+{
+  "name": "MFBValidator",
+  "version": "0.1.0",
+  "summary": "A polymorphic validation toolset for Objective-C",
+  "description": "MFBValidator allows you to constract a validator object for validating instances of different classes respectively to their class hierarchy.",
+  "homepage": "https://github.com/flix-tech/MFBValidator",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Nickolay Tarbayev": "tarbayev-n@yandex.ru"
+  },
+  "source": {
+    "git": "https://github.com/flix-tech/MFBValidator.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "default_subspecs": "Core",
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": "MFBValidator/Sources/**/*.{h,m}",
+      "public_header_files": "MFBValidator/Sources/Public/**/*.h"
+    },
+    {
+      "name": "Tests",
+      "dependencies": {
+        "MFBValidator/Core": [
+
+        ],
+        "OCMock": [
+
+        ]
+      },
+      "source_files": "MFBValidator/Tests/**/*.{h,m}",
+      "frameworks": "XCTest",
+      "xcconfig": {
+        "HEADER_SEARCH_PATHS": "${PODS_ROOT}/Headers/Private/MFBValidator"
+      }
+    }
+  ]
+}

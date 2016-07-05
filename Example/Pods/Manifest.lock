@@ -1,0 +1,21 @@
+PODS:
+  - MFBValidator/Core (0.1.0)
+  - MFBValidator/Tests (0.1.0):
+    - MFBValidator/Core
+    - OCMock
+  - OCMock (3.3)
+
+DEPENDENCIES:
+  - MFBValidator/Tests (from `../`)
+
+EXTERNAL SOURCES:
+  MFBValidator:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MFBValidator: 771e701c7e87d65c730abfa46953e4d6f7e7cd39
+  OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
+
+PODFILE CHECKSUM: c1675516614a1d553ce013e52c2d9040a1596063
+
+COCOAPODS: 1.0.0

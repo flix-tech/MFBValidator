@@ -1,0 +1,7 @@
+use_frameworks!
+
+target 'MFBValidator_Tests' do
+
+  pod 'MFBValidator/Tests', :path => '../'
+
+end
