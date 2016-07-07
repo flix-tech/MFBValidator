@@ -23,24 +23,21 @@
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "MFBValidator/Sources/**/*.{h,m}",
-      "public_header_files": "MFBValidator/Sources/Public/**/*.h"
+      "public_header_files": "MFBValidator/Public/**/*.h",
+      "source_files": [
+        "MFBValidator/Sources/**/*.{h,m}",
+        "MFBValidator/Public/**/*.h"
+      ]
     },
     {
       "name": "Tests",
       "dependencies": {
-        "MFBValidator/Core": [
-
-        ],
         "OCMock": [
 
         ]
       },
-      "source_files": "MFBValidator/Tests/**/*.{h,m}",
-      "frameworks": "XCTest",
-      "xcconfig": {
-        "HEADER_SEARCH_PATHS": "${PODS_ROOT}/Headers/Private/MFBValidator"
-      }
+      "source_files": "MFBValidator/**/*.{h,m}",
+      "frameworks": "XCTest"
     }
   ]
 }

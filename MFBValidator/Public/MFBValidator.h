@@ -17,22 +17,26 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSPredicate (MFBValidationRule) <MFBValidationRule>
 @end
 
+@interface MFBValidationRule : NSObject <MFBValidationRule>
 
-@interface MFBActionValidationRule : NSObject <MFBValidationRule>
+/**
+ * @param field A field which value is passed as an argument to the @p block.
+ * @param block The block is applied to the field's value to be evaluated.
+ */
++ (instancetype)ruleForField:(NSString *)field
+                       block:(BOOL(^)(id _Nullable value))block;
 
-- (instancetype)init NS_UNAVAILABLE;
-
-/** 
- * @param fields A list of fields to be passed as arguments to the @p action method.
+/**
+ * @param fields A list of fields which values are passed as arguments to the @p action method.
  * @param target An object that is a recipient of @p action messages sent by the receiver.
  * @param action A selector identifying a method of a @p target that performs fields validation.
- * It should be of the form @a-(BOOL)validateValue1:value2:...valueN: 
+ * It should be of the form @a-(BOOL)validateValue1:value2:...valueN:
  * with number of arguments equal to number of fields
  * and return @p YES if validation succeeds or @p NO otherwise.
  */
-- (instancetype)initWithFields:(NSArray<NSString *> *)fields
-              validatingTarget:(id)target
-                        action:(SEL)action NS_DESIGNATED_INITIALIZER;
++ (instancetype)ruleForFields:(NSArray<NSString *> *)fields
+             validatingTarget:(id)target
+                       action:(SEL)action;
 
 @end
 

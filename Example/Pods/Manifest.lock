@@ -1,9 +1,7 @@
 PODS:
-  - MFBValidator/Core (0.1.0)
   - MFBValidator/Tests (0.1.0):
-    - MFBValidator/Core
     - OCMock
-  - OCMock (3.3)
+  - OCMock (3.3.1)
 
 DEPENDENCIES:
   - MFBValidator/Tests (from `../`)
@@ -13,8 +11,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MFBValidator: 771e701c7e87d65c730abfa46953e4d6f7e7cd39
-  OCMock: d68685bde31f69cb61d518dcb39269080c78b5ed
+  MFBValidator: 46a752869684c8c137e913659e2945343f998d68
+  OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
 
 PODFILE CHECKSUM: c1675516614a1d553ce013e52c2d9040a1596063
 

@@ -7,6 +7,8 @@
 //
 
 #import "MFBValidator.h"
+#import "MFBBlockValidationRule.h"
+#import "MFBActionValidationRule.h"
 
 @interface MFBOrderedSetClassTable<ObjectType> : NSObject
 - (void)addObject:(ObjectType)object forClass:(Class)aClass;
@@ -147,54 +149,25 @@
 @end
 
 
-@implementation MFBActionValidationRule {
-    id _target;
-    SEL _action;
-    NSArray<NSString *> *_fields;
+@implementation MFBValidationRule
 
-    NSMethodSignature *_signature;
-}
-
-- (instancetype)initWithFields:(NSArray<NSString *> *)fields validatingTarget:(id)target action:(SEL)action
++ (instancetype)ruleForField:(NSString *)field block:(BOOL (^)(id _Nullable))block
 {
-    self = [super init];
-    if (self) {
-        _target = target;
-        _action = action;
-        _fields = [fields copy];
-
-        _signature = [_target methodSignatureForSelector:_action];
-
-        NSCAssert(_signature.numberOfArguments == fields.count + 2,
-                  @"Inappropriate number of arguments (%d), expected (%d) in validation action '%@' for fields %@",
-                  (int) _signature.numberOfArguments - 2, (int) fields.count, NSStringFromSelector(_action), _fields);
-    }
-    return self;
+    return [[MFBBlockValidationRule alloc] initWithField:field block:block];
 }
+
++ (instancetype)ruleForFields:(NSArray<NSString *> *)fields validatingTarget:(id)target action:(SEL)action
+{
+    return [[MFBActionValidationRule alloc] initWithFields:fields validatingTarget:target action:action];
+}
+
+
+#pragma mark - MFBValidationRule Methods
 
 - (BOOL)evaluateWithObject:(id)object
 {
-    NSMutableArray *values = [NSMutableArray new];
-
-    for (NSString *field in _fields) {
-        [values addObject:[object valueForKey:field] ?: [NSNull null]];
-    }
-
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:_signature];
-    invocation.selector = _action;
-
-    [values enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj != [NSNull null]) {
-            [invocation setArgument:&obj atIndex:idx + 2];
-        }
-    }];
-
-    [invocation invokeWithTarget:_target];
-
-    BOOL result;
-    [invocation getReturnValue:&result];
-
-    return result;
+    [self doesNotRecognizeSelector:_cmd];
+    return NO;
 }
 
 @end

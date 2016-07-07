@@ -8,16 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "MFBValidator.h"
-
-@interface MFBActionValidationRuleTestClass : NSObject
-@property (nonatomic) NSString *fieldA1;
-@property (nonatomic) NSString *fieldA2;
-@end
-
-@implementation MFBActionValidationRuleTestClass
-@end
-
+#import <MFBValidator/MFBValidator.h>
 
 @interface MFBActionValidationRuleTarget : NSObject
 @end
@@ -37,7 +28,7 @@
 @end
 
 @implementation MFBActionValidationRuleTests {
-    MFBActionValidationRule *_rule;
+    id<MFBValidationRule> _rule;
 
     NSArray *_fields;
     id _validatorTargetMock;
@@ -47,14 +38,13 @@
 {
     [super setUp];
 
-    _fields = @[ NSStringFromSelector(@selector(fieldA1)),
-                 NSStringFromSelector(@selector(fieldA2)) ];
+    _fields = @[ @"fieldA1", @"fieldA2" ];
 
     _validatorTargetMock = OCMPartialMock([MFBActionValidationRuleTarget new]);
 
-    _rule = [[MFBActionValidationRule alloc] initWithFields:_fields
-                                           validatingTarget:_validatorTargetMock
-                                                     action:@selector(validateX:Y:)];
+    _rule = [MFBValidationRule ruleForFields:_fields
+                            validatingTarget:_validatorTargetMock
+                                      action:@selector(validateX:Y:)];
 }
 
 
@@ -62,7 +52,7 @@
 
 - (void)test_evaluateWithObject_twoNonNilFieldsFails_returnsNO
 {
-    id objectMock = OCMPartialMock([MFBActionValidationRuleTestClass new]);
+    id objectMock = OCMPartialMock([NSObject new]);
 
     id valueA1Stub = [NSObject new];
     OCMExpect([objectMock valueForKey:_fields[0]]).andReturn(valueA1Stub);
@@ -77,7 +67,7 @@
 
 - (void)test_evaluateWithObject_twoNonNilFieldsSucceeds_returnsYES
 {
-    id objectMock = OCMPartialMock([MFBActionValidationRuleTestClass new]);
+    id objectMock = OCMPartialMock([NSObject new]);
 
     id valueA1Stub = [NSObject new];
     OCMExpect([objectMock valueForKey:_fields[0]]).andReturn(valueA1Stub);
@@ -92,7 +82,7 @@
 
 - (void)test_evaluateWithObject_twoNilFieldsFails_returnsNO
 {
-    id objectMock = OCMPartialMock([MFBActionValidationRuleTestClass new]);
+    id objectMock = OCMPartialMock([NSObject new]);
 
     OCMExpect([objectMock valueForKey:_fields[0]]).andReturn(nil);
 
@@ -105,7 +95,7 @@
 
 - (void)test_evaluateWithObject_twoNilFieldsSucceeds_returnsYES
 {
-    id objectMock = OCMPartialMock([MFBActionValidationRuleTestClass new]);
+    id objectMock = OCMPartialMock([NSObject new]);
 
     OCMExpect([objectMock valueForKey:_fields[0]]).andReturn(nil);
 

@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		017ECEBF1D2C129E00173811 /* MFBActionValidationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017ECEBD1D2C129E00173811 /* MFBActionValidationRuleTests.m */; };
-		017ECEC01D2C129E00173811 /* MFBValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 017ECEBE1D2C129E00173811 /* MFBValidatorTests.m */; };
+		01A8F5361D2EBC3D001A8CBA /* DummyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A8F5351D2EBC3D001A8CBA /* DummyTests.m */; };
 		2DD9CE80F7F7907E67CB179E /* Pods_MFBValidator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4348D0C4EA0CAC040AED15EF /* Pods_MFBValidator_Tests.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -16,8 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		017ECEBD1D2C129E00173811 /* MFBActionValidationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBActionValidationRuleTests.m; sourceTree = "<group>"; };
-		017ECEBE1D2C129E00173811 /* MFBValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFBValidatorTests.m; sourceTree = "<group>"; };
+		01A8F5351D2EBC3D001A8CBA /* DummyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyTests.m; sourceTree = "<group>"; };
 		345CF00287EC2227D475E604 /* Pods-MFBValidator_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFBValidator_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MFBValidator_Example/Pods-MFBValidator_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4348D0C4EA0CAC040AED15EF /* Pods_MFBValidator_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MFBValidator_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -27,7 +25,7 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		B5F9EECD936D03CF263D7CDF /* MFBValidator.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MFBValidator.podspec; path = ../MFBValidator.podspec; sourceTree = "<group>"; };
+		B5F9EECD936D03CF263D7CDF /* MFBValidator.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = MFBValidator.podspec; path = ../MFBValidator.podspec; sourceTree = "<group>"; };
 		B7E301C6349CBFA0A17C81C7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BB25099788E9BA09C972C6A5 /* Pods-MFBValidator_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFBValidator_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MFBValidator_Tests/Pods-MFBValidator_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3CCFF352BC84BC8164D5A73 /* Pods-MFBValidator_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MFBValidator_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MFBValidator_Tests/Pods-MFBValidator_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,16 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		017ECEBC1D2C129E00173811 /* MFBValidator */ = {
-			isa = PBXGroup;
-			children = (
-				017ECEBD1D2C129E00173811 /* MFBActionValidationRuleTests.m */,
-				017ECEBE1D2C129E00173811 /* MFBValidatorTests.m */,
-			);
-			name = MFBValidator;
-			path = ../../MFBValidator/Tests;
-			sourceTree = "<group>";
-		};
 		56DA63931695E06E7AEF8421 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,8 +91,8 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				017ECEBC1D2C129E00173811 /* MFBValidator */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
+				01A8F5351D2EBC3D001A8CBA /* DummyTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -244,8 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				017ECEC01D2C129E00173811 /* MFBValidatorTests.m in Sources */,
-				017ECEBF1D2C129E00173811 /* MFBActionValidationRuleTests.m in Sources */,
+				01A8F5361D2EBC3D001A8CBA /* DummyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

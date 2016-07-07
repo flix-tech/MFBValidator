@@ -24,16 +24,15 @@ MFBValidator allows you to constract a validator object for validating instances
   s.requires_arc = true
 
   s.subspec 'Core' do |sp|
-    sp.source_files = 'MFBValidator/Sources/**/*.{h,m}'
-    sp.public_header_files = 'MFBValidator/Sources/Public/**/*.h'
+    public_header_files = 'MFBValidator/Public/**/*.h'
+    sp.public_header_files = public_header_files
+    sp.source_files = 'MFBValidator/Sources/**/*.{h,m}', public_header_files
   end
 
   s.subspec 'Tests' do |sp|
-    sp.dependency 'MFBValidator/Core'
     sp.dependency 'OCMock'
-    sp.source_files = 'MFBValidator/Tests/**/*.{h,m}'
+    sp.source_files = 'MFBValidator/**/*.{h,m}'
     sp.frameworks = 'XCTest'
-    sp.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/Headers/Private/#{s.name}" }
   end
 
   s.default_subspec = 'Core'
