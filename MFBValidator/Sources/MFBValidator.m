@@ -9,7 +9,6 @@
 #import "MFBValidator.h"
 #import "MFBBlockValidationRule.h"
 #import "MFBActionValidationRule.h"
-#import "MFBEqualityValidatationRule.h"
 
 
 @interface MFBOrderedSetClassTable<ObjectType> : NSObject
@@ -158,9 +157,18 @@
     return [[MFBBlockValidationRule alloc] initWithField:field block:block];
 }
 
-+ (instancetype)ruleForField:(NSString *)field isEqualTo:(id)value
++ (instancetype)ruleForField:(NSString *)field isEqualTo:(id)requiredValue
 {
-    return [[MFBEqualityValidatationRule alloc] initWithField:field value:value];
+    return [[MFBBlockValidationRule alloc] initWithField:field block:^BOOL(id  _Nullable value) {
+        return value == requiredValue || [value isEqual:requiredValue];
+    }];
+}
+
++ (instancetype)isNotNilRuleForField:(NSString *)field
+{
+    return [[MFBBlockValidationRule alloc] initWithField:field block:^BOOL(id  _Nullable value) {
+        return value != nil;
+    }];
 }
 
 + (instancetype)ruleForFields:(NSArray<NSString *> *)fields validatingTarget:(id)target action:(SEL)action

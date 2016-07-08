@@ -33,6 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)ruleForField:(NSString *)field isEqualTo:(id _Nullable)value;
 
 /**
+ * @param field A field which value is evaluated.
+ */
++ (instancetype)isNotNilRuleForField:(NSString *)field;
+
+/**
  * @param fields A list of fields which values are passed as arguments to the @p action method.
  * @param target An object that is a recipient of @p action messages sent by the receiver.
  * @param action A selector identifying a method of a @p target that performs fields validation.
