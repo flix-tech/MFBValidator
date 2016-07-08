@@ -25,6 +25,13 @@
 @implementation MFBValidatorTestClassB
 @end
 
+@interface MFBValidatorTestClassA1 : NSObject
+@property (nonatomic) NSString *fieldA1;
+@end
+
+@implementation MFBValidatorTestClassA1
+@end
+
 
 @interface MFBValidatorTests : XCTestCase
 
@@ -265,6 +272,31 @@
                          failure:Failure];
 
     OCMVerifyAll(validator);
+}
+
+- (void)test_validateObject_SameRuleForUnrelatedClasses_RuleEvaluatedWithInstancesOfBothClasses
+{
+    NSString *const FailureReason = @"Failure";
+
+    id ruleMock = OCMProtocolMock(@protocol(MFBValidationRule));
+
+    NSArray *classes = @[ [MFBValidatorTestClassA class], [MFBValidatorTestClassA1 class] ];
+
+    [_validator addValidationRule:ruleMock
+                       forClasses:classes
+                          failure:FailureReason];
+
+    for (Class aClass in classes) {
+
+        id objectStub = [aClass new];
+
+        OCMExpect([ruleMock evaluateWithObject:objectStub]).andReturn(NO);
+
+        NSString *result = [_validator validateObject:objectStub];
+
+        OCMVerifyAll(ruleMock);
+        XCTAssertEqualObjects(result, FailureReason);
+    }
 }
 
 @end

@@ -34,10 +34,6 @@
 
 - (void)addObject:(id)object forClass:(Class)aClass
 {
-    if ([_objects containsObject:object]) {
-        return;
-    }
-
     NSMutableIndexSet *indexes = _indexSets[aClass];
 
     if (!indexes) {
@@ -45,8 +41,14 @@
         _indexSets[(id) aClass] = indexes;
     }
 
-    [indexes addIndex:_objects.count];
-    [_objects addObject:object];
+    NSUInteger idx = [_objects indexOfObject:object];
+
+    if (idx == NSNotFound) {
+        idx = _objects.count;
+        [_objects addObject:object];
+    }
+
+    [indexes addIndex:idx];
 }
 
 - (NSIndexSet *)indexesForClass:(Class)aClass
