@@ -229,3 +229,16 @@
 }
 
 @end
+
+@implementation MFBValidator (MultipleClasses)
+
+- (void)addValidationRule:(id<MFBValidationRule>)validationRule
+               forClasses:(NSArray<Class> *)classes
+                  failure:(id<NSCopying>)failure
+{
+    for (Class aClass in classes) {
+        [self addValidationRule:validationRule forClass:aClass failure:failure];
+    }
+}
+
+@end

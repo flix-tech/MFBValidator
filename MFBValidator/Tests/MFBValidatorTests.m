@@ -246,4 +246,25 @@
     XCTAssertEqualObjects(result, FailureReason);
 }
 
+- (void)test_addValidationRule_forMultipleClasses
+{
+    id validator = OCMPartialMock(_validator);
+
+    id ruleStub = [NSObject new];
+
+    NSString *const Failure = @"Failure";
+
+    NSArray *classes = @[ [NSObject class], [NSString class] ];
+
+    for (Class aClass in classes) {
+        OCMExpect([validator addValidationRule:ruleStub forClass:aClass failure:Failure]);
+    }
+
+    [validator addValidationRule:ruleStub
+                      forClasses:classes
+                         failure:Failure];
+
+    OCMVerifyAll(validator);
+}
+
 @end

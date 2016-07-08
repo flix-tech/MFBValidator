@@ -62,4 +62,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface MFBValidator<FailureType> (MultipleClasses)
+
+- (void)addValidationRule:(id<MFBValidationRule>)validationRule
+               forClasses:(NSArray<Class> *)classes
+                  failure:(FailureType <NSCopying>)failure;
+
+@end
+
 NS_ASSUME_NONNULL_END
