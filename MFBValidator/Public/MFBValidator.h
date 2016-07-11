@@ -52,22 +52,22 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface MFBValidator<FailureType> : NSObject
+@interface MFBValidator<FailureType : id<NSCopying>> : NSObject
 
 - (void)addValidationRule:(id<MFBValidationRule>)validationRule
                  forClass:(Class)aClass
-                  failure:(FailureType <NSCopying>)failure;
+                  failure:(FailureType)failure;
 
 - (nullable FailureType)validateObject:(id)object;
 
 @end
 
 
-@interface MFBValidator<FailureType> (MultipleClasses)
+@interface MFBValidator<FailureType : id<NSCopying>> (MultipleClasses)
 
 - (void)addValidationRule:(id<MFBValidationRule>)validationRule
                forClasses:(NSArray<Class> *)classes
-                  failure:(FailureType <NSCopying>)failure;
+                  failure:(FailureType)failure;
 
 @end
 
