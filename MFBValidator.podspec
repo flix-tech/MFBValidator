@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MFBValidator'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A polymorphic validation toolset for Objective-C'
 
   s.description      = <<-DESC
